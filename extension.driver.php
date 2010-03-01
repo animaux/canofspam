@@ -153,18 +153,18 @@
 				@in_array(
 					'canofspam', $context['selected']
 				),
-				'Can Of Spam'
+				__('Can Of Spam')
 			);
 		}
 		
 		public function appendEventFilterDocumentation($context) {
 			if (!is_array($context['selected']) or !in_array('canofspam', $context['selected'])) return;
 			
-			$context['documentation'][] = new XMLElement('h3', 'Can Of Spam Filter');
+			$context['documentation'][] = new XMLElement('h3', __('Can Of Spam Filter'));
 			
-			$context['documentation'][] = new XMLElement('p', '
+			$context['documentation'][] = new XMLElement('p', __('
 				To use the Can Of Spam filter, add the following field to your form:
-			');
+			'));
 			
 			$context['documentation'][] = contentBlueprintsEvents::processDocumentationCode('
 <input name="canofspam" value="{$canofspam}" type="hidden" />
@@ -175,10 +175,10 @@
 			$group = new XMLElement('fieldset');
 			$group->setAttribute('class', 'settings');
 			$group->appendChild(
-				new XMLElement('legend', 'Can Of Spam Filter')
+				new XMLElement('legend', __('Can Of Spam Filter'))
 			);
 			
-			$uniqueID = Widget::Label('Unique ID');
+			$uniqueID = Widget::Label(__('Unique ID'));
 			$uniqueID->appendChild(Widget::Input(
 				'settings[canofspam][uniqueid]', General::Sanitize($this->getUniqueID())
 			));
@@ -205,7 +205,7 @@
 			if (!$valid) $this->clearFormId();
 			
 			$context['messages'][] = array(
-				'canofspam', $valid, (!$valid ? 'Data was identified as spam.' : null)
+				'canofspam', $valid, (!$valid ? __('Data was identified as spam.') : null)
 			);
 		}
 		
